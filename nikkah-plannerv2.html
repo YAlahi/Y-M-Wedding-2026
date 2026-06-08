@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yusuf & Maryam — Nikkah Planner 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --gold-dim: #7a6040;
+    --bg: #0d0c0a;
+    --bg2: #151310;
+    --bg3: #1c1a16;
+    --border: #2a2520;
+    --text: #e8dfd0;
+    --text-dim: #7a6e60;
+    --text-mid: #b0a090;
+    --green: #4a7a5a;
+    --purple: #6a5a8a;
+    --rust: #8a5a3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; min-height: 100vh; }
+  
+  /* HEADER */
+  .header {
+    background: linear-gradient(180deg, #1c1a12 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 24px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% -20%, rgba(201,169,110,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .header-eyebrow { font-size: 10px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 6vw, 48px); font-weight: 300; color: #f5ede0; letter-spacing: 0.08em; line-height: 1.2; }
+  .header h1 em { font-style: italic; color: var(--gold-light); }
+  .header-sub { font-size: 12px; color: var(--text-dim); margin-top: 8px; letter-spacing: 0.12em; }
+  .header-date-badge {
+    display: inline-flex; gap: 20px; margin-top: 18px;
+    border: 1px solid var(--gold-dim);
+    padding: 8px 20px; border-radius: 2px;
+    font-size: 11px; letter-spacing: 0.15em; color: var(--gold);
+  }
+  .progress-wrap { max-width: 420px; margin: 22px auto 0; }
+  .progress-row { display: flex; justify-content: space-between; font-size: 10px; letter-spacing: 0.12em; color: var(--text-dim); margin-bottom: 6px; }
+  .progress-bar-bg { background: var(--border); border-radius: 1px; height: 3px; }
+  .progress-bar-fill { height: 3px; border-radius: 1px; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); transition: width 0.6s ease; }
+  .progress-pct { font-size: 10px; color: var(--gold); text-align: right; margin-top: 5px; }
+
+  /* TABS */
+  .tabs { display: flex; overflow-x: auto; border-bottom: 1px solid var(--border); background: var(--bg2); padding: 0 12px; gap: 2px; }
+  .tab-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 14px 16px; font-family: 'Jost', sans-serif; font-weight: 400;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-dim); white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab-btn:hover { color: var(--text-mid); }
+
+  /* LAYOUT */
+  .content { max-width: 960px; margin: 0 auto; padding: 28px 18px 60px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .card-gold { border-left: 3px solid var(--gold); }
+  .card-green { border-left: 3px solid var(--green); }
+  .card-purple { border-left: 3px solid var(--purple); }
+  .card-rust { border-left: 3px solid var(--rust); }
+  .eyebrow { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .eyebrow.green { color: #6aaa7a; }
+  .eyebrow.purple { color: #9a8aba; }
+  .eyebrow.rust { color: #ba8a6a; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: #f0e8d8; margin-bottom: 4px; }
+  .label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 3px; }
+  .value { font-size: 14px; color: var(--text-mid); }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+  .tip { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+  .tip strong { color: var(--gold-light); }
+  .badge {
+    display: inline-block; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px; margin-right: 6px; margin-top: 6px;
+  }
+  .badge-gold { background: rgba(201,169,110,0.12); color: var(--gold); border: 1px solid rgba(201,169,110,0.3); }
+  .badge-green { background: rgba(74,122,90,0.15); color: #6aaa7a; border: 1px solid rgba(74,122,90,0.3); }
+  .badge-red { background: rgba(180,60,60,0.12); color: #cc6a6a; border: 1px solid rgba(180,60,60,0.3); }
+
+  /* TASKS */
+  .task-item {
+    display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
+    padding: 10px 12px; border-radius: 3px;
+    background: var(--bg); border: 1px solid var(--border);
+    margin-bottom: 7px; transition: all 0.2s;
+  }
+  .task-item:hover { border-color: var(--gold-dim); }
+  .task-item.done { background: rgba(201,169,110,0.05); }
+  .task-item input[type=checkbox] { margin-top: 2px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; }
+  .task-text { font-size: 13px; color: var(--text-mid); line-height: 1.5; flex: 1; }
+  .task-item.done .task-text { text-decoration: line-through; color: var(--text-dim); }
+
+  /* MINI PROGRESS */
+  .mini-bar-bg { background: var(--border); border-radius: 1px; height: 3px; margin: 10px 0 4px; }
+  .mini-bar-fill { height: 3px; border-radius: 1px; transition: width 0.4s; }
+
+  /* VENUES */
+  .venue-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .venue-card.shortlisted { border-color: var(--gold-dim); }
+  .venue-card .shortlist-star {
+    position: absolute; top: 14px; right: 16px;
+    font-size: 11px; color: var(--gold); letter-spacing: 0.1em;
+  }
+  .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: #f0e8d8; }
+  .venue-meta { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .venue-price { font-size: 14px; color: var(--gold); margin-top: 4px; }
+  .venue-note { font-size: 13px; color: var(--text-dim); margin-top: 10px; line-height: 1.65; }
+  .venue-link { font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.3); padding-bottom: 1px; display: inline-block; margin-top: 10px; }
+  .viewing-box {
+    background: rgba(201,169,110,0.08);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 3px; padding: 8px 12px;
+    margin-top: 10px; font-size: 12px; color: var(--gold-light);
+  }
+
+  /* EDITABLE FIELDS */
+  .editable-field {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 13px; font-family: 'Jost', sans-serif;
+    color: var(--text-mid); width: 100%; resize: vertical;
+    outline: none; transition: border-color 0.2s;
+    min-height: 36px;
+  }
+  .editable-field:focus { border-color: var(--gold-dim); }
+  textarea.editable-field { min-height: 80px; }
+  .field-label { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 5px; display: block; }
+  .field-group { margin-bottom: 14px; }
+
+  /* BUTTONS */
+  .btn {
+    font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; border: none; cursor: pointer; border-radius: 3px;
+    padding: 9px 20px; transition: all 0.2s;
+  }
+  .btn-gold { background: var(--gold); color: #0d0c0a; }
+  .btn-gold:hover { background: var(--gold-light); }
+  .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); }
+  .btn-outline:hover { background: rgba(201,169,110,0.08); }
+  .btn-sm { padding: 6px 14px; font-size: 9px; }
+  .btn-danger { background: transparent; color: #cc6a6a; border: 1px solid rgba(180,60,60,0.3); font-size: 9px; padding: 4px 10px; }
+
+  /* GUEST LIST */
+  .guest-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .guest-table th { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+  .guest-table td { padding: 9px 10px; border-bottom: 1px solid rgba(42,37,32,0.6); color: var(--text-mid); vertical-align: top; }
+  .guest-table tr:last-child td { border-bottom: none; }
+  .guest-table tr:hover td { background: rgba(201,169,110,0.03); }
+  .guest-table td input { background: transparent; border: none; font-family: 'Jost', sans-serif; font-size: 13px; color: var(--text-mid); outline: none; width: 100%; }
+  .guest-table td input:focus { color: var(--text); }
+
+  /* NOTES LOG */
+  .note-entry { background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 14px 16px; margin-bottom: 10px; }
+  .note-date { font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .note-body { font-size: 13px; color: var(--text-mid); line-height: 1.7; white-space: pre-wrap; }
+
+  /* BUDGET BAR */
+  .budget-row { margin-bottom: 16px; }
+  .budget-label-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+  .budget-label { font-size: 13px; color: var(--text-mid); }
+  .budget-amount { font-size: 13px; }
+  .budget-bar-bg { background: var(--border); border-radius: 2px; height: 6px; }
+  .budget-bar-fill { height: 6px; border-radius: 2px; transition: width 0.5s; }
+
+  /* TIMELINE */
+  .timeline-wrap { position: relative; padding-left: 110px; }
+  .timeline-line { position: absolute; left: 90px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .timeline-item { position: relative; margin-bottom: 32px; }
+  .timeline-month { position: absolute; left: -110px; width: 95px; text-align: right; }
+  .timeline-month span { font-size: 10px; color: var(--gold); letter-spacing: 0.08em; line-height: 1.4; display: block; }
+  .timeline-dot { position: absolute; left: -14px; top: 4px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold-dim); border: 2px solid var(--bg); }
+  .timeline-dot.event { background: var(--gold); }
+  .timeline-tasks { display: grid; gap: 5px; }
+  .timeline-task { font-size: 13px; color: var(--text-dim); }
+  .timeline-task.highlight {
+    color: #f0e8d8; font-weight: 400;
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.25);
+    padding: 5px 12px; border-radius: 3px;
+  }
+
+  /* DECISION LOG */
+  .decision-item { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--gold-dim); border-radius: 3px; padding: 12px 16px; margin-bottom: 10px; }
+  .decision-topic { font-size: 12px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+  .decision-text { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ADD ITEM FORMS */
+  .add-form { background: var(--bg3); border: 1px dashed var(--border); border-radius: 4px; padding: 16px; margin-top: 12px; }
+  .add-form-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+  .form-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* RESPONSIVE */
+  @media(max-width: 600px) {
+    .header h1 { font-size: 26px; }
+    .timeline-wrap { padding-left: 80px; }
+    .timeline-month { left: -80px; width: 68px; }
+    .timeline-month span { font-size: 9px; }
+  }
+
+  .section-intro { font-size: 13px; color: var(--text-dim); line-height: 1.75; margin-bottom: 22px; }
+  .flex-between { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; }
+  .urgent { color: #cc8a4a; }
+  input[type=text], input[type=number], select {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 3px;
+    padding: 7px 10px; font-family: 'Jost', sans-serif; font-size: 13px; color: var(--text-mid);
+    outline: none; transition: border-color 0.2s;
+  }
+  input[type=text]:focus, input[type=number]:focus, select:focus { border-color: var(--gold-dim); }
+  select { color: var(--text-mid); cursor: pointer; }
+  select option { background: var(--bg2); }
+  .mt8 { margin-top: 8px; }
+  .mt16 { margin-top: 16px; }
+  .mt24 { margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Planning Hub · London 2026</div>
+  <h1><em>Yusuf</em> & <em>Maryam</em></h1>
+  <div class="header-sub">Nikkah · Engagement · Introduction Dinner</div>
+  <div class="header-date-badge">
+    <span>📅 Sept / Oct 2026</span>
+    <span>🕌 London</span>
+    <span>🌿 Halal</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-row">
+      <span>OVERALL PROGRESS</span>
+      <span id="progress-label" style="color:var(--gold)">0 / 0 tasks</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div class="progress-pct" id="progress-pct">0% complete</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('overview')">Overview</button>
+  <button class="tab-btn" onclick="switchTab('nikkah')">🌿 Nikkah</button>
+  <button class="tab-btn" onclick="switchTab('engagement')">💍 Engagement</button>
+  <button class="tab-btn" onclick="switchTab('intro')">🍽️ Intro Dinner</button>
+  <button class="tab-btn" onclick="switchTab('venues')">Venues</button>
+  <button class="tab-btn" onclick="switchTab('guests')">Guest List</button>
+  <button class="tab-btn" onclick="switchTab('budget')">Budget</button>
+  <button class="tab-btn" onclick="switchTab('timeline')">Timeline</button>
+  <button class="tab-btn" onclick="switchTab('decisions')">Decisions</button>
+  <button class="tab-btn" onclick="switchTab('notes')">Notes</button>
+</div>
+
+<div class="content">
+
+<!-- ==================== OVERVIEW ==================== -->
+<div class="panel active" id="panel-overview">
+  <p class="section-intro">
+    Mashallah — your one-stop planning hub for all three events. Track tasks, venues, decisions, guests and budget in one place. Both you and Maryam can edit and update in real time. 🤲
+  </p>
+
+  <div style="background:rgba(201,169,110,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:4px;padding:16px 20px;margin-bottom:20px;">
+    <div class="eyebrow">The Story</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--text-mid);line-height:1.8;font-style:italic;">
+      "We met on 21st September 2024 and had our first date on 26th September. A year later — we say our Nikkah. Alhamdulillah."
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <!-- Event cards -->
+    <div class="card card-rust">
+      <div class="eyebrow rust">Event 1</div>
+      <div class="section-title">🍽️ Intro Dinner</div>
+      <div style="margin-top:10px" class="grid-2">
+        <div><div class="label">When</div><div class="value">~August 2026</div></div>
+        <div><div class="label">Where</div><div class="value">Your House</div></div>
+        <div><div class="label">Guests</div><div class="value">40–60</div></div>
+        <div><div class="label">Budget</div><div class="value">£500–£1k</div></div>
+      </div>
+      <div class="mini-bar-bg"><div class="mini-bar-fill" id="bar-intro" style="width:0%;background:var(--rust)"></div></div>
+      <div style="font-size:11px;color:var(--text-dim)" id="bar-intro-label">0 tasks done</div>
+    </div>
+
+    <div class="card card-purple">
+      <div class="eyebrow purple">Event 2</div>
+      <div class="section-title">💍 Engagement</div>
+      <div style="margin-top:10px" class="grid-2">
+        <div><div class="label">When</div><div class="value">~Late August / Sept</div></div>
+        <div><div class="label">Where</div><div class="value">TBD (Maryam deciding)</div></div>
+        <div><div class="label">Guests</div><div class="value">100–150</div></div>
+        <div><div class="label">Budget</div><div class="value">£2k–£3.5k</div></div>
+      </div>
+      <div class="mini-bar-bg"><div class="mini-bar-fill" id="bar-eng" style="width:0%;background:var(--purple)"></div></div>
+      <div style="font-size:11px;color:var(--text-dim)" id="bar-eng-label">0 tasks done</div>
+    </div>
+
+    <div class="card card-green">
+      <div class="eyebrow green">Event 3 — Main Event</div>
+      <div class="section-title">🌿 Nikkah</div>
+      <div style="margin-top:10px" class="grid-2">
+        <div><div class="label">When</div><div class="value">Late Sept / Oct 2026</div></div>
+        <div><div class="label">Where</div><div class="value">TBD — Venue viewing</div></div>
+        <div><div class="label">Guests</div><div class="value">150–200</div></div>
+        <div><div class="label">Budget</div><div class="value">£4k–£5.5k</div></div>
+      </div>
+      <div class="mini-bar-bg"><div class="mini-bar-fill" id="bar-nik" style="width:0%;background:var(--green)"></div></div>
+      <div style="font-size:11px;color:var(--text-dim)" id="bar-nik-label">0 tasks done</div>
+    </div>
+  </div>
+
+  <div class="card mt24">
+    <div class="eyebrow">Key Details Locked In</div>
+    <div class="grid-2" style="margin-top:12px">
+      <div><div class="label">Total Budget</div><div class="value">£5k–£10k</div></div>
+      <div><div class="label">Colour Theme</div><div class="value">White & Beige (Maryam to confirm)</div></div>
+      <div><div class="label">Style</div><div class="value">Modern-Traditional · Manor / Marquee</div></div>
+      <div><div class="label">Catering</div><div class="value">Halal only — non-negotiable</div></div>
+      <div><div class="label">Sheikh / Imam</div><div class="value">✓ Confirmed — have one in mind</div></div>
+      <div><div class="label">Rings</div><div class="value">Exchanged at Nikkah (not engagement)</div></div>
+      <div><div class="label">Photographer</div><div class="value">Needed for all events</div></div>
+      <div><div class="label">Content Creator</div><div class="value">Informal phone shooter — Maryam's idea</div></div>
+    </div>
+  </div>
+
+  <div class="card mt24" style="border-color:rgba(204,106,74,0.4)">
+    <div class="eyebrow" style="color:#cc8a4a">🚨 Urgent Actions Right Now</div>
+    <div style="margin-top:10px;display:grid;gap:8px">
+      <div class="tip">→ <strong>Chigwell Marquee viewing — Sat 9th June @ 10/11am</strong> — awaiting confirmation</div>
+      <div class="tip">→ <strong>Avaley Manor viewing — Fri 8th June @ 6:30pm</strong> — tomorrow!</div>
+      <div class="tip">→ <strong>The Clays viewing — Sat 9th June @ 4pm</strong></div>
+      <div class="tip">→ Decide on Nikkah date (3rd Oct, 10th Oct or 26th Sept) based on viewings</div>
+      <div class="tip">→ Discuss with Maryam whether she wants engagement at home or restaurant</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NIKKAH ==================== -->
+<div class="panel" id="panel-nikkah">
+  <div class="flex-between" style="margin-bottom:20px">
+    <div>
+      <div class="eyebrow green">Main Event</div>
+      <div class="section-title" style="font-size:28px">🌿 The Nikkah</div>
+    </div>
+    <div style="text-align:right">
+      <div class="label">Target Date</div>
+      <div style="font-size:14px;color:var(--gold)">Late Sept / Early Oct 2026</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Date depends on venue</div>
+    </div>
+  </div>
+
+  <!-- Vision -->
+  <div class="card" style="margin-bottom:18px;background:rgba(74,122,90,0.06);border-color:rgba(74,122,90,0.3)">
+    <div class="eyebrow green">The Vision</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--text-mid);line-height:1.8;margin-top:6px;font-style:italic">
+      Nikkah ceremony under an outdoor canopy / garden setting. Then move indoors for the meal and celebration. 
+      Classical manor house or marquee on estate grounds. White and beige colour theme. 
+      Rings exchanged at the Nikkah — Yusuf puts the ring on Maryam's hand himself. 🌿
+    </div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="card">
+    <div class="flex-between">
+      <div class="eyebrow">Tasks Checklist</div>
+      <span class="tag" id="nikkah-task-count">0/0</span>
+    </div>
+    <div class="mini-bar-bg" style="margin:10px 0 14px"><div class="mini-bar-fill" id="nikkah-task-bar" style="width:0%;background:var(--green)"></div></div>
+    <div id="nikkah-tasks"></div>
+    <!-- Add task -->
+    <div class="add-form mt16">
+      <div class="add-form-title">Add a task</div>
+      <div class="form-row">
+        <input type="text" id="nikkah-new-task" placeholder="e.g. Book florist" style="flex:1;min-width:200px">
+        <button class="btn btn-gold btn-sm" onclick="addTask('nikkah')">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="grid-3 mt16">
+    <!-- Outfits -->
+    <div class="card">
+      <div class="eyebrow">👗 Outfits</div>
+      <div class="field-group mt8">
+        <label class="field-label">Maryam's Outfit</label>
+        <textarea class="editable-field" placeholder="Style, colour, designer, status..." oninput="saveField('nikkah-maryam-outfit',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Yusuf's Outfit</label>
+        <textarea class="editable-field" placeholder="Style, colour, where from, status..." oninput="saveField('nikkah-yusuf-outfit',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Family — Asian Clothing</label>
+        <textarea class="editable-field" placeholder="Colour theme, coordination plan..." oninput="saveField('nikkah-family-outfit',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Friends — Matching Outfits</label>
+        <textarea class="editable-field" placeholder="What Yusuf's friends will wear, colour..." oninput="saveField('nikkah-friends-outfit',this.value)"></textarea>
+      </div>
+    </div>
+
+    <!-- Ceremony Details -->
+    <div class="card">
+      <div class="eyebrow">🕌 Ceremony Details</div>
+      <div class="field-group mt8">
+        <label class="field-label">Mehr Amount</label>
+        <input type="text" class="editable-field" placeholder="To be decided" oninput="saveField('nikkah-mehr',this.value)" style="width:100%">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Sheikh / Imam</label>
+        <input type="text" class="editable-field" placeholder="Name / contact details" oninput="saveField('nikkah-sheikh',this.value)" style="width:100%">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Entrance Plan</label>
+        <textarea class="editable-field" placeholder="How Yusuf enters, how Maryam enters, order of events..." oninput="saveField('nikkah-entrance',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Exit Plan</label>
+        <textarea class="editable-field" placeholder="How you exit as a couple, car, etc..." oninput="saveField('nikkah-exit',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Music / Nasheed</label>
+        <textarea class="editable-field" placeholder="Walk-in music, background, decisions..." oninput="saveField('nikkah-music',this.value)"></textarea>
+      </div>
+    </div>
+
+    <!-- Suppliers -->
+    <div class="card">
+      <div class="eyebrow">📋 Suppliers</div>
+      <div class="field-group mt8">
+        <label class="field-label">Caterer</label>
+        <textarea class="editable-field" placeholder="Name, price, contact..." oninput="saveField('nikkah-caterer',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Photographer</label>
+        <textarea class="editable-field" placeholder="Name, price, package..." oninput="saveField('nikkah-photo',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Content Creator (Informal)</label>
+        <textarea class="editable-field" placeholder="Phone-based, social content, name/contact..." oninput="saveField('nikkah-content',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Event Planner / Coordinator</label>
+        <textarea class="editable-field" placeholder="Maryam's idea — someone to manage the day. Name/contact..." oninput="saveField('nikkah-planner',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Florist / Décor</label>
+        <textarea class="editable-field" placeholder="White & beige theme. Canopy flowers, table centres..." oninput="saveField('nikkah-florist',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Welcome Banner / Board</label>
+        <textarea class="editable-field" placeholder="'Yusuf & Maryam's Nikkah' board — supplier, design..." oninput="saveField('nikkah-banner',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Rings</label>
+        <textarea class="editable-field" placeholder="Ring details, where buying, budget..." oninput="saveField('nikkah-rings',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Transport</label>
+        <textarea class="editable-field" placeholder="Car hire, arrival plan..." oninput="saveField('nikkah-transport',this.value)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Venue Shortlist for Nikkah -->
+  <div class="card mt16">
+    <div class="eyebrow green">🏛️ Venue — Shortlisted</div>
+    <p class="tip" style="margin-top:8px;margin-bottom:14px">Three venues in active consideration. See full venue details in the Venues tab.</p>
+
+    <div class="venue-card shortlisted" style="border-color:rgba(201,169,110,0.4)">
+      <div class="shortlist-star">⭐ VIEWING BOOKED</div>
+      <div class="venue-name">Chigwell Marquees — Mini Marquee</div>
+      <div class="venue-meta">Chigwell Hall Estate, Essex · 40 mins from Central London</div>
+      <div class="venue-price">£5,000 dry hire · Available: 3rd Oct & 10th Oct (Saturdays)</div>
+      <div class="viewing-box">📅 Viewing: Saturday 9th June @ 10am/11am — awaiting confirmation</div>
+      <div class="venue-note">Up to 200 guests · Starlit ceiling · Secret Garden for outdoor ceremony · Grade II listed estate · Perfect for outdoor canopy Nikkah + indoor reception.</div>
+    </div>
+
+    <div class="venue-card shortlisted" style="border-color:rgba(201,169,110,0.4)">
+      <div class="shortlist-star">⭐ VIEWING TOMORROW</div>
+      <div class="venue-name">Avaley Manor</div>
+      <div class="venue-meta">London area · New venue — negotiable pricing</div>
+      <div class="venue-price">£11,000 · Available: 26th Sept</div>
+      <div class="viewing-box">📅 Viewing: Friday 8th June @ 6:30pm — TOMORROW</div>
+      <div class="venue-note">New venue — price is negotiable. Worth visiting to assess quality vs price. Could get a strong deal as they build their reputation.</div>
+    </div>
+
+    <div class="venue-card shortlisted" style="border-color:rgba(201,169,110,0.4)">
+      <div class="shortlist-star">⭐ VIEWING BOOKED</div>
+      <div class="venue-name">The Clays Marquee</div>
+      <div class="venue-meta">Georgian House, Essex · ~3 acres of land</div>
+      <div class="venue-price">Dry hire: £4,500 · Bengali full package: £11k · Pakistani full package: £11.5k · Available: 26th Sept (Saturday)</div>
+      <div class="viewing-box">📅 Viewing: Saturday 9th June @ 4pm</div>
+      <div class="venue-note">Beautiful Georgian house backdrop. Unique marquee entrance. Events manager Ray highly praised. Note: some reviews mention bathroom/cooling issues — worth asking about directly.</div>
+    </div>
+  </div>
+
+  <!-- Seating / Layout -->
+  <div class="card mt16">
+    <div class="eyebrow">🪑 Seating & Layout Notes</div>
+    <textarea class="editable-field mt8" style="width:100%;min-height:100px" placeholder="Layout ideas, seating plan notes, top table arrangements, VIP seating..." oninput="saveField('nikkah-seating',this.value)"></textarea>
+  </div>
+</div>
+
+<!-- ==================== ENGAGEMENT ==================== -->
+<div class="panel" id="panel-engagement">
+  <div class="flex-between" style="margin-bottom:20px">
+    <div>
+      <div class="eyebrow purple">Event 2</div>
+      <div class="section-title" style="font-size:28px">💍 Engagement Party</div>
+    </div>
+    <div style="text-align:right">
+      <div class="label">Target Date</div>
+      <div style="font-size:14px;color:#9a8aba">~1 month before Nikkah</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Late Aug / Early Sept 2026</div>
+    </div>
+  </div>
+
+  <div class="card" style="background:rgba(106,90,138,0.06);border-color:rgba(106,90,138,0.3);margin-bottom:18px">
+    <div class="eyebrow purple">The Vision</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--text-mid);line-height:1.8;margin-top:6px;font-style:italic">
+      Maryam is deciding between: (1) home venue with open marquee roof + stage, or (2) restaurant hire. 
+      Yusuf brings his people, she has her family. Gifts and rings brought for her and her family. 
+      A cake or tiramisu. Photographer + content creator. Outfits: Yusuf in a suit, Maryam in a saari (to confirm).
+      Welcome banner at entrance. 💍
+    </div>
+  </div>
+
+  <!-- Decision needed -->
+  <div class="card" style="border-color:rgba(204,138,74,0.4);margin-bottom:18px">
+    <div class="eyebrow urgent">⚠️ Decision Needed</div>
+    <div class="tip mt8">Maryam is still deciding on the venue format. Once decided, most other planning can flow from it.</div>
+    <div class="field-group mt16">
+      <label class="field-label">Venue Decision (Update when decided)</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Home marquee at Maryam's house OR restaurant hire — decision pending..." oninput="saveField('eng-venue-decision',this.value)"></textarea>
+    </div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="card">
+    <div class="flex-between">
+      <div class="eyebrow">Tasks Checklist</div>
+      <span class="tag" id="eng-task-count">0/0</span>
+    </div>
+    <div class="mini-bar-bg" style="margin:10px 0 14px"><div class="mini-bar-fill" id="eng-task-bar" style="width:0%;background:var(--purple)"></div></div>
+    <div id="eng-tasks"></div>
+    <div class="add-form mt16">
+      <div class="add-form-title">Add a task</div>
+      <div class="form-row">
+        <input type="text" id="eng-new-task" placeholder="e.g. Finalise guest list" style="flex:1;min-width:200px">
+        <button class="btn btn-gold btn-sm" onclick="addTask('eng')">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option A: Home -->
+  <div class="card mt16">
+    <div class="eyebrow purple">Option A — At Maryam's Home</div>
+    <div class="tip mt8 mb8">Open marquee (roof only, no walls) + a stage for you both to sit on. More personal, lower cost, full control over food and décor.</div>
+    <div class="field-group mt16">
+      <label class="field-label">Marquee Company (roof only)</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Supplier name, quote, contact..." oninput="saveField('eng-marquee',this.value)"></textarea>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Stage Setup</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Supplier, size, backdrop..." oninput="saveField('eng-stage',this.value)"></textarea>
+    </div>
+    <div class="field-group">
+      <label class="field-label">Food Plan (home-cooked or catered?)</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Decision pending — home cooked or halal caterer..." oninput="saveField('eng-food',this.value)"></textarea>
+    </div>
+  </div>
+
+  <!-- Option B: Restaurant -->
+  <div class="card mt16">
+    <div class="eyebrow purple">Option B — Restaurant Hire</div>
+    <div class="tip mt8">Below are places you've mentioned plus V's suggestions. All halal, all hireable for private events.</div>
+
+    <div class="venue-card" style="margin-top:14px">
+      <div class="venue-name">Meet Bros — Paddington / Shoreditch</div>
+      <div class="venue-meta">London · Fully halal Asian-fusion steakhouse</div>
+      <div class="venue-price">From £2,700 (wedding/engagement packages) · ~£75pp for 3-course</div>
+      <div class="venue-note">Cave-style medieval interior, stunning ambiance. Fully halal, alcohol-free. Private hire options including full venue or intimate alcoves. Post-Nikkah lunch packages available. Two locations: Paddington + Shoreditch.</div>
+      <a href="https://www.meetbros.co.uk/private-hire/" class="venue-link" target="_blank">meetbros.co.uk →</a>
+    </div>
+
+    <div class="venue-card" style="margin-top:10px">
+      <div class="venue-name">Royal Nawaab — Perivale</div>
+      <div class="venue-meta">Hoover Building, Perivale, London · Indian & Pakistani halal banqueting</div>
+      <div class="venue-price">Flexible — banqueting suites for 50–500 guests · Free parking</div>
+      <div class="venue-note">35+ years of South Asian halal banqueting. Royal Suite (large) and Imperial Suite (intimate). Free underground parking via Tesco. Prayer room on site. Award-winning food. Very popular for Muslim events.</div>
+      <a href="https://royalnawaab.com/perivale/banqueting-suites/" class="venue-link" target="_blank">royalnawaab.com →</a>
+    </div>
+
+    <div class="venue-card" style="margin-top:10px">
+      <div class="venue-name">Saffron Kitchen</div>
+      <div class="venue-meta">London · Enquire for private hire availability</div>
+      <div class="venue-price">TBC — enquire directly</div>
+      <div class="venue-note">To enquire — ask about private hire for ~60–80 guests, halal menu, and any engagement package pricing.</div>
+    </div>
+
+    <div class="venue-card" style="margin-top:10px">
+      <div class="venue-name">Shara Grill</div>
+      <div class="venue-meta">London · Enquire for private hire availability</div>
+      <div class="venue-price">TBC — enquire directly</div>
+      <div class="venue-note">Worth enquiring about private hire. Ask for halal menu confirmation and minimum spend / hire fee.</div>
+    </div>
+
+    <div class="venue-card" style="margin-top:10px">
+      <div class="venue-name">Hedsor House</div>
+      <div class="venue-meta">Taplow, Buckinghamshire · 45 mins from London</div>
+      <div class="venue-price">TBC — up to 150 guests · halal catering allowed</div>
+      <div class="venue-note">Grand architecture, lush grounds. Halal catering permitted (external caterers welcome). Could work as a more elevated option if budget allows. Tel: +44 01628 819 050</div>
+      <a href="https://hedsor.com" class="venue-link" target="_blank">hedsor.com →</a>
+    </div>
+  </div>
+
+  <!-- Suppliers & details -->
+  <div class="grid-3 mt16">
+    <div class="card">
+      <div class="eyebrow">Outfits</div>
+      <div class="field-group mt8">
+        <label class="field-label">Yusuf's Outfit</label>
+        <textarea class="editable-field" placeholder="Suit style, colour, where from..." oninput="saveField('eng-yusuf-outfit',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Maryam's Outfit</label>
+        <textarea class="editable-field" placeholder="Saari — style, colour (to confirm)..." oninput="saveField('eng-maryam-outfit',this.value)"></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Photography & Content</div>
+      <div class="field-group mt8">
+        <label class="field-label">Photographer</label>
+        <textarea class="editable-field" placeholder="Same as Nikkah? Package deal? Name/contact..." oninput="saveField('eng-photo',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Content Creator</label>
+        <textarea class="editable-field" placeholder="Informal phone-based content shooter..." oninput="saveField('eng-content',this.value)"></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Décor & Extras</div>
+      <div class="field-group mt8">
+        <label class="field-label">Flowers & Décor</label>
+        <textarea class="editable-field" placeholder="White/beige theme, supplier, cost..." oninput="saveField('eng-decor',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Welcome Banner</label>
+        <textarea class="editable-field" placeholder="'Yusuf & Maryam's Engagement' board..." oninput="saveField('eng-banner',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Cake / Tiramisu</label>
+        <textarea class="editable-field" placeholder="Baker, design, flavour, cost..." oninput="saveField('eng-cake',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Gifts for Maryam's Family</label>
+        <textarea class="editable-field" placeholder="What you're bringing, planning..." oninput="saveField('eng-gifts',this.value)"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== INTRO DINNER ==================== -->
+<div class="panel" id="panel-intro">
+  <div class="flex-between" style="margin-bottom:20px">
+    <div>
+      <div class="eyebrow rust">Event 1</div>
+      <div class="section-title" style="font-size:28px">🍽️ Introduction Dinner</div>
+    </div>
+    <div style="text-align:right">
+      <div class="label">Target Date</div>
+      <div style="font-size:14px;color:#ba8a6a">~August 2026</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-top:3px">Before engagement</div>
+    </div>
+  </div>
+
+  <div class="card" style="background:rgba(138,90,58,0.06);border-color:rgba(138,90,58,0.3);margin-bottom:18px">
+    <div class="eyebrow rust">The Vision</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--text-mid);line-height:1.8;margin-top:6px;font-style:italic">
+      Simple family dinner at Yusuf's house. No extra décor really needed. Invite majority of Yusuf's family + some of Maryam's family. 
+      This is where the news is broken — first formal announcement that Yusuf and Maryam are getting married. Warm, intimate, celebratory. 🍽️
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="flex-between">
+      <div class="eyebrow">Tasks Checklist</div>
+      <span class="tag" id="intro-task-count">0/0</span>
+    </div>
+    <div class="mini-bar-bg" style="margin:10px 0 14px"><div class="mini-bar-fill" id="intro-task-bar" style="width:0%;background:var(--rust)"></div></div>
+    <div id="intro-tasks"></div>
+    <div class="add-form mt16">
+      <div class="add-form-title">Add a task</div>
+      <div class="form-row">
+        <input type="text" id="intro-new-task" placeholder="e.g. Confirm date with both families" style="flex:1;min-width:200px">
+        <button class="btn btn-gold btn-sm" onclick="addTask('intro')">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3 mt16">
+    <div class="card">
+      <div class="eyebrow">Details</div>
+      <div class="field-group mt8">
+        <label class="field-label">Confirmed Date</label>
+        <input type="text" class="editable-field" placeholder="TBC" oninput="saveField('intro-date',this.value)" style="width:100%">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Approx Guest Count</label>
+        <input type="text" class="editable-field" placeholder="40–60" oninput="saveField('intro-guests',this.value)" style="width:100%">
+      </div>
+      <div class="field-group">
+        <label class="field-label">Menu / Food Plan</label>
+        <textarea class="editable-field" placeholder="Home cooked, who's cooking, what dishes..." oninput="saveField('intro-food',this.value)"></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Logistics</div>
+      <div class="field-group mt8">
+        <label class="field-label">Layout at Home</label>
+        <textarea class="editable-field" placeholder="Seating arrangement, garden setup, living room..." oninput="saveField('intro-layout',this.value)"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label">How the Announcement Happens</label>
+        <textarea class="editable-field" placeholder="Who speaks, when, how the news is shared..." oninput="saveField('intro-announce',this.value)"></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Notes</div>
+      <textarea class="editable-field" style="width:100%;min-height:160px" placeholder="Any other notes, ideas, things to remember..." oninput="saveField('intro-notes',this.value)"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== VENUES ==================== -->
+<div class="panel" id="panel-venues">
+  <div class="section-title" style="margin-bottom:6px">🏛️ Venue Research</div>
+  <p class="section-intro">Your shortlisted venues + additional suggestions. All researched for halal catering, capacity, and outdoor potential.</p>
+
+  <div class="eyebrow" style="margin-bottom:12px">Your Shortlisted Venues — Viewings This Week</div>
+
+  <div class="venue-card shortlisted">
+    <div class="shortlist-star">⭐ SHORTLISTED</div>
+    <div class="venue-name">Chigwell Marquees — Mini Marquee</div>
+    <div class="venue-meta">Chigwell Hall Estate, High Road, Chigwell, IG7 6BD · Essex (40 min from Central London)</div>
+    <div class="venue-price">£5,000 dry hire</div>
+    <div style="margin-top:8px">
+      <span class="badge badge-green">HALAL ✓</span>
+      <span class="badge badge-green">OUTDOOR ✓</span>
+      <span class="badge badge-gold">UP TO 200</span>
+      <span class="badge badge-gold">GRADE II LISTED ESTATE</span>
+    </div>
+    <div class="viewing-box" style="margin-top:10px">📅 Viewing: Sat 9th June @ 10am/11am — awaiting confirmation back from them</div>
+    <div class="venue-note" style="margin-top:10px">
+      Set in 42-acre Chigwell Hall estate. Mini Marquee: up to 200 guests, starlit ceiling, natural light glass windows, air conditioning, access to Secret Garden for outdoor ceremony — perfect for outdoor canopy Nikkah + indoor dining. 
+      Dry hire so you bring your own caterer (must be halal). On-site parking. 40 mins from Central London.
+      Available dates: <strong style="color:var(--gold-light)">3rd October</strong> and <strong style="color:var(--gold-light)">10th October</strong> (both Saturdays).
+    </div>
+    <div class="field-group mt16">
+      <label class="field-label">Your Notes After Viewing</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Add notes after the viewing on 9th June..." oninput="saveField('v-chigwell-notes',this.value)"></textarea>
+    </div>
+    <a href="https://www.thechigwellmarquees.com" class="venue-link" target="_blank">thechigwellmarquees.com →</a>
+    <span style="margin-left:16px;font-size:12px;color:var(--text-dim)">📞 020 8500 8989 · enquiries@thechigwellmarquees.co.uk</span>
+  </div>
+
+  <div class="venue-card shortlisted" style="margin-top:14px">
+    <div class="shortlist-star">⭐ SHORTLISTED</div>
+    <div class="venue-name">Avaley Manor</div>
+    <div class="venue-meta">London · New venue</div>
+    <div class="venue-price">£11,000 · Price negotiable (new venue building reputation)</div>
+    <div style="margin-top:8px">
+      <span class="badge badge-green">HALAL — confirm at viewing</span>
+      <span class="badge badge-gold">26TH SEPT AVAILABLE</span>
+    </div>
+    <div class="viewing-box" style="margin-top:10px">📅 Viewing: Friday 8th June @ 6:30pm — TOMORROW EVENING</div>
+    <div class="venue-note" style="margin-top:10px">New venue — priced at £11k but negotiable. Being a new venue means they want to impress and fill their calendar, so push for a deal. Worth checking: outdoor space, halal catering options, capacity, décor included or dry hire, what's in the package.</div>
+    <div class="field-group mt16">
+      <label class="field-label">Your Notes After Viewing</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Add notes after the viewing on 8th June..." oninput="saveField('v-avaley-notes',this.value)"></textarea>
+    </div>
+  </div>
+
+  <div class="venue-card shortlisted" style="margin-top:14px">
+    <div class="shortlist-star">⭐ SHORTLISTED</div>
+    <div class="venue-name">The Clays Marquee</div>
+    <div class="venue-meta">Georgian House, Essex · ~3 acres of land · Countryside setting</div>
+    <div class="venue-price">Dry hire: £4,500 · Bengali full package: £11,000 · Pakistani full package: £11,500</div>
+    <div style="margin-top:8px">
+      <span class="badge badge-green">HALAL ✓</span>
+      <span class="badge badge-green">OUTDOOR ✓</span>
+      <span class="badge badge-gold">26TH SEPT AVAILABLE (SATURDAY)</span>
+    </div>
+    <div class="viewing-box" style="margin-top:10px">📅 Viewing: Saturday 9th June @ 4pm</div>
+    <div class="venue-note" style="margin-top:10px">
+      Stunning Georgian house backdrop. Unique marquee entrance — highly praised by couples. Events manager Ray received consistently excellent reviews for service and communication. Full packages include halal Asian cuisine.
+      <strong style="color:#cc8a4a"> Note to check at viewing:</strong> Some reviews mention bathroom and cooling system issues, and electricity supply problems during events. Ask Ray directly about this.
+    </div>
+    <div class="field-group mt16">
+      <label class="field-label">Your Notes After Viewing</label>
+      <textarea class="editable-field" style="width:100%" placeholder="Add notes after the viewing on 9th June..." oninput="saveField('v-clays-notes',this.value)"></textarea>
+    </div>
+    <a href="https://www.claysmarquees.com" class="venue-link" target="_blank">claysmarquees.com →</a>
+  </div>
+
+  <hr class="divider" style="margin-top:24px">
+  <div class="eyebrow" style="margin-bottom:12px">Additional Suggestions — Worth Researching</div>
+
+  <div class="venue-card" style="margin-top:10px">
+    <div class="venue-name">Forty Hall</div>
+    <div class="venue-meta">Forty Hill, Enfield, North London · Grade I Jacobean Manor</div>
+    <div class="venue-price">~£2,500–£5,000</div>
+    <div style="margin-top:8px"><span class="badge badge-green">HALAL (external caterer)</span><span class="badge badge-green">OUTDOOR ✓</span><span class="badge badge-gold">UP TO 200</span></div>
+    <div class="venue-note">Stunning Grade I listed Jacobean manor. Beautiful grounds and walled gardens — perfect for outdoor canopy ceremony. North London so accessible. Allows external halal caterers.</div>
+    <a href="https://www.fortyhallevents.co.uk" class="venue-link" target="_blank">fortyhallevents.co.uk →</a>
+  </div>
+
+  <div class="venue-card" style="margin-top:10px">
+    <div class="venue-name">Morden Hall</div>
+    <div class="venue-meta">Morden, South London · National Trust · River Gardens</div>
+    <div class="venue-price">~£2,000–£4,500</div>
+    <div style="margin-top:8px"><span class="badge badge-green">HALAL (external caterer)</span><span class="badge badge-green">OUTDOOR ✓</span><span class="badge badge-gold">UP TO 150</span></div>
+    <div class="venue-note">National Trust property. Beautiful river gardens, rustic barn and outdoor spaces. Very popular for South Asian weddings. Allows external halal caterers. Slightly under your guest count ceiling — check capacity carefully.</div>
+    <a href="https://www.nationaltrust.org.uk/morden-hall-park" class="venue-link" target="_blank">nationaltrust.org.uk →</a>
+  </div>
+
+  <div class="venue-card" style="margin-top:10px">
+    <div class="venue-name">Syon Park — Syon Marquee</div>
+    <div class="venue-meta">Brentford, West London · Historic estate</div>
+    <div class="venue-price">TBC — enquire directly</div>
+    <div style="margin-top:8px"><span class="badge badge-green">HALAL (flexible)</span><span class="badge badge-green">OUTDOOR ✓</span><span class="badge badge-gold">CUSTOMISABLE</span></div>
+    <div class="venue-note">Stunning historic estate with flexible marquee. Experienced in hosting Muslim weddings. Gardens for ceremony, marquee for reception. Well-regarded for Nikkah events specifically.</div>
+  </div>
+
+  <!-- Add your own venue -->
+  <div class="add-form mt24">
+    <div class="add-form-title">Add a venue you've found</div>
+    <div class="form-row">
+      <input type="text" id="new-venue-name" placeholder="Venue name" style="flex:1;min-width:140px">
+      <input type="text" id="new-venue-location" placeholder="Location" style="flex:1;min-width:120px">
+      <input type="text" id="new-venue-price" placeholder="Price / notes" style="flex:1;min-width:120px">
+      <button class="btn btn-gold btn-sm" onclick="addVenue()">Add Venue</button>
+    </div>
+  </div>
+  <div id="custom-venues"></div>
+</div>
+
+<!-- ==================== GUEST LIST ==================== -->
+<div class="panel" id="panel-guests">
+  <div class="section-title" style="margin-bottom:6px">👥 Guest List</div>
+  <p class="section-intro">Track guests across all three events. Add names, side (Yusuf / Maryam), event attending, and RSVP status.</p>
+
+  <div class="flex-between" style="margin-bottom:14px">
+    <div id="guest-summary" style="font-size:13px;color:var(--text-dim)">0 guests added</div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-outline btn-sm" onclick="exportGuests()">Export CSV</button>
+    </div>
+  </div>
+
+  <!-- Add guest form -->
+  <div class="add-form" style="margin-bottom:18px">
+    <div class="add-form-title">Add a Guest</div>
+    <div class="form-row">
+      <input type="text" id="g-name" placeholder="Full name" style="flex:2;min-width:150px">
+      <select id="g-side" style="flex:1;min-width:110px">
+        <option value="">Side</option>
+        <option>Yusuf's</option>
+        <option>Maryam's</option>
+        <option>Both / Mutual</option>
+      </select>
+      <select id="g-event" style="flex:1;min-width:130px">
+        <option value="">Event(s)</option>
+        <option>All 3</option>
+        <option>Nikkah only</option>
+        <option>Engagement only</option>
+        <option>Intro Dinner only</option>
+        <option>Nikkah + Engagement</option>
+      </select>
+      <select id="g-rsvp" style="flex:1;min-width:100px">
+        <option value="">RSVP</option>
+        <option>Invited</option>
+        <option>Confirmed ✓</option>
+        <option>Declined ✗</option>
+        <option>Pending</option>
+      </select>
+      <input type="text" id="g-notes" placeholder="Notes (relation, contact...)" style="flex:2;min-width:150px">
+      <button class="btn btn-gold btn-sm" onclick="addGuest()">Add</button>
+    </div>
+  </div>
+
+  <div style="overflow-x:auto">
+    <table class="guest-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Side</th>
+          <th>Event(s)</th>
+          <th>RSVP</th>
+          <th>Notes</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="guest-tbody"></tbody>
+    </table>
+  </div>
+  <div id="guest-empty" style="text-align:center;padding:32px;color:var(--text-dim);font-size:13px">No guests added yet — start adding above</div>
+</div>
+
+<!-- ==================== BUDGET ==================== -->
+<div class="panel" id="panel-budget">
+  <div class="section-title" style="margin-bottom:6px">💷 Budget Tracker</div>
+  <p class="section-intro">Total budget: £5k–£10k across all three events. Track spending per event and keep an eye on the total.</p>
+
+  <div class="card" style="margin-bottom:20px">
+    <div class="eyebrow">Budget Overview</div>
+    <div style="font-size:42px;font-family:'Cormorant Garamond',serif;font-weight:300;color:#f0e8d8;margin:10px 0 4px">£10,000</div>
+    <div style="font-size:12px;color:var(--text-dim)">Upper range — includes £1k buffer for surprises</div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="eyebrow">Allocation by Event</div>
+    <div style="margin-top:16px">
+      <div class="budget-row">
+        <div class="budget-label-row">
+          <span class="budget-label">🍽️ Introduction Dinner</span>
+          <span class="budget-amount" style="color:var(--rust)">£800</span>
+        </div>
+        <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:8%;background:var(--rust)"></div></div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">8% of total</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label-row">
+          <span class="budget-label">💍 Engagement Party</span>
+          <span class="budget-amount" style="color:var(--purple)">£3,200</span>
+        </div>
+        <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:32%;background:var(--purple)"></div></div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">32% of total</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label-row">
+          <span class="budget-label">🌿 Nikkah</span>
+          <span class="budget-amount" style="color:var(--green)">£5,000</span>
+        </div>
+        <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:50%;background:var(--green)"></div></div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">50% of total</div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-label-row">
+          <span class="budget-label">Buffer / Misc</span>
+          <span class="budget-amount" style="color:var(--text-dim)">£1,000</span>
+        </div>
+        <div class="budget-bar-bg"><div class="budget-bar-fill" style="width:10%;background:var(--text-dim)"></div></div>
+        <div style="font-size:11px;color:var(--text-dim);margin-top:3px">10% of total</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spend tracker -->
+  <div class="card" style="margin-bottom:16px">
+    <div class="eyebrow">Log Confirmed Costs</div>
+    <div id="spend-list" style="margin-top:12px;display:grid;gap:8px"></div>
+    <div id="spend-empty" style="font-size:13px;color:var(--text-dim);margin-top:8px">No costs logged yet</div>
+    <div class="add-form mt16">
+      <div class="add-form-title">Add a cost</div>
+      <div class="form-row">
+        <input type="text" id="cost-name" placeholder="Item (e.g. Venue deposit)" style="flex:2;min-width:160px">
+        <select id="cost-event" style="flex:1;min-width:120px">
+          <option>Nikkah</option>
+          <option>Engagement</option>
+          <option>Intro Dinner</option>
+          <option>General</option>
+        </select>
+        <input type="number" id="cost-amount" placeholder="£ Amount" style="flex:1;min-width:100px">
+        <button class="btn btn-gold btn-sm" onclick="addCost()">Add</button>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between">
+      <span style="font-size:13px;color:var(--text-dim)">Total spent / committed</span>
+      <span style="font-size:16px;color:var(--gold)" id="total-spent">£0</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px">
+      <span style="font-size:12px;color:var(--text-dim)">Remaining budget</span>
+      <span style="font-size:14px;color:#6aaa7a" id="remaining-budget">£10,000</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">💡 Cost-Saving Tips</div>
+    <div style="display:grid;gap:10px;margin-top:12px">
+      <div class="tip">→ <strong>Chigwell dry hire at £5k</strong> is best value if you source your own halal caterer — could save £2–3k vs full package</div>
+      <div class="tip">→ <strong>Friday or Sunday events</strong> are typically 20–30% cheaper than Saturdays</div>
+      <div class="tip">→ <strong>Combined photographer + content creator package</strong> for both engagement and Nikkah can save £300–£600</div>
+      <div class="tip">→ <strong>For the intro dinner</strong> — home-cooked by family feels more authentic and saves £500+</div>
+      <div class="tip">→ <strong>Avaley Manor is new</strong> — push hard for a deal, they need to fill their calendar and build reviews</div>
+      <div class="tip">→ <strong>Welcome banners / signage</strong> — Etsy or local print shops are 50–70% cheaper than event companies</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TIMELINE ==================== -->
+<div class="panel" id="panel-timeline">
+  <div class="section-title" style="margin-bottom:6px">📅 Timeline</div>
+  <p class="section-intro">Month-by-month countdown. The sooner venues and suppliers are booked, the smoother everything runs — especially for Sept/Oct which is peak season.</p>
+
+  <div class="timeline-wrap">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item">
+      <div class="timeline-month"><span>June 2026</span></div>
+      <div class="timeline-dot event"></div>
+      <div class="timeline-tasks">
+        <div class="timeline-task highlight">📅 Avaley Manor viewing — Fri 8th June @ 6:30pm</div>
+        <div class="timeline-task highlight">📅 Chigwell Marquee viewing — Sat 9th June @ 10/11am</div>
+        <div class="timeline-task highlight">📅 The Clays viewing — Sat 9th June @ 4pm</div>
+        <div class="timeline-task">Decide on Nikkah venue after viewings</div>
+        <div class="timeline-task">Confirm Nikkah date (26th Sept / 3rd Oct / 10th Oct)</div>
+        <div class="timeline-task">Confirm Sheikh / Imam availability on chosen date</div>
+        <div class="timeline-task">Begin Nikkah caterer search</div>
+        <div class="timeline-task">Book photographer (secure date ASAP)</div>
+        <div class="timeline-task">Maryam decides engagement venue format</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month"><span>July 2026</span></div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-tasks">
+        <div class="timeline-task">Set intro dinner date — confirm with both families</div>
+        <div class="timeline-task">Book engagement party venue (if restaurant) OR arrange marquee/stage (if home)</div>
+        <div class="timeline-task">Begin outfit shopping — Nikkah & engagement</div>
+        <div class="timeline-task">Brief florist / décor company (white & beige theme)</div>
+        <div class="timeline-task">Find content creator (informal phone shooter)</div>
+        <div class="timeline-task">Find event planner / coordinator for Nikkah day</div>
+        <div class="timeline-task">Decide on Mehr amount</div>
+        <div class="timeline-task">Start guest lists — Yusuf's side + Maryam's side</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month"><span>August 2026</span></div>
+      <div class="timeline-dot event"></div>
+      <div class="timeline-tasks">
+        <div class="timeline-task highlight">🍽️ Introduction Dinner — families meet!</div>
+        <div class="timeline-task">Send engagement invitations / save the dates</div>
+        <div class="timeline-task">Order welcome banners (engagement + Nikkah)</div>
+        <div class="timeline-task">Outfits — finalise and purchase</div>
+        <div class="timeline-task">Confirm all engagement suppliers</div>
+        <div class="timeline-task">Nikkah — confirm caterer, book décor company</div>
+        <div class="timeline-task">Sort rings (purchase before engagement)</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month"><span>Early Sept 2026</span></div>
+      <div class="timeline-dot event"></div>
+      <div class="timeline-tasks">
+        <div class="timeline-task highlight">💍 Engagement Party — Maryam's family + friends!</div>
+        <div class="timeline-task">Send Nikkah formal invitations</div>
+        <div class="timeline-task">Final Nikkah venue walkthrough + briefing</div>
+        <div class="timeline-task">Confirm seating plan</div>
+        <div class="timeline-task">Entrance / exit plan finalised</div>
+        <div class="timeline-task">Music / nasheed playlist confirmed</div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month"><span>Late Sept / Oct 2026</span></div>
+      <div class="timeline-dot event"></div>
+      <div class="timeline-tasks">
+        <div class="timeline-task highlight">🌿 THE NIKKAH — Alhamdulillah 🤲</div>
+        <div class="timeline-task highlight">💍 Rings exchanged — Yusuf puts the ring on Maryam's hand</div>
+        <div class="timeline-task" style="color:var(--gold-light);font-style:italic">One year from when you met. Mashallah.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DECISIONS ==================== -->
+<div class="panel" id="panel-decisions">
+  <div class="section-title" style="margin-bottom:6px">✍️ Decisions Log</div>
+  <p class="section-intro">Log every decision you and Maryam make as you go. This keeps you both aligned and saves re-hashing things later.</p>
+
+  <div id="decisions-list"></div>
+  <div id="decisions-empty" style="text-align:center;padding:28px;color:var(--text-dim);font-size:13px">No decisions logged yet — add your first below</div>
+
+  <div class="add-form mt16">
+    <div class="add-form-title">Log a Decision</div>
+    <div class="form-row" style="flex-direction:column;gap:10px">
+      <input type="text" id="dec-topic" placeholder="Topic (e.g. Ring exchange timing)" style="width:100%">
+      <textarea id="dec-text" class="editable-field" placeholder="The decision made and any context..." style="min-height:70px"></textarea>
+      <button class="btn btn-gold btn-sm" style="align-self:flex-start" onclick="addDecision()">Log Decision</button>
+    </div>
+  </div>
+
+  <!-- Pre-loaded decisions -->
+  <div class="card mt24" style="border-color:rgba(201,169,110,0.2)">
+    <div class="eyebrow">Confirmed So Far</div>
+    <div style="display:grid;gap:8px;margin-top:12px">
+      <div class="decision-item"><div class="decision-topic">RING EXCHANGE</div><div class="decision-text">Rings will be exchanged at the Nikkah — not the engagement. Yusuf wants to put the ring on Maryam's hand himself. 💍</div></div>
+      <div class="decision-item"><div class="decision-topic">NIKKAH DATE LOGIC</div><div class="decision-text">Date to be decided based on venue availability. Aim: end of September / early October 2026. Special because: we met 21st Sept 2024, first date 26th Sept 2024 — exactly one year prior.</div></div>
+      <div class="decision-item"><div class="decision-topic">CATERING</div><div class="decision-text">Halal catering only at all events. Non-negotiable.</div></div>
+      <div class="decision-item"><div class="decision-topic">NIKKAH LAYOUT</div><div class="decision-text">Ceremony outdoors (canopy / garden area). Meal and reception indoors.</div></div>
+      <div class="decision-item"><div class="decision-topic">COLOUR THEME</div><div class="decision-text">White and beige. Maryam to give final sign-off on exact shades.</div></div>
+      <div class="decision-item"><div class="decision-topic">OUTFITS — FAMILY</div><div class="decision-text">Family to wear Asian clothing at Nikkah. Exact coordination TBD.</div></div>
+      <div class="decision-item"><div class="decision-topic">OUTFITS — FRIENDS</div><div class="decision-text">Yusuf's friends will all match their outfits. TBD exact style/colour.</div></div>
+      <div class="decision-item"><div class="decision-topic">PHOTOGRAPHY</div><div class="decision-text">Need both a formal photographer AND an informal content creator (phone-based social media shooter). Maryam's idea for the content creator.</div></div>
+      <div class="decision-item"><div class="decision-topic">EVENT PLANNER</div><div class="decision-text">Maryam wants an event planner / coordinator on the day to ensure everything runs smoothly and she doesn't have to stress.</div></div>
+      <div class="decision-item"><div class="decision-topic">INTRO DINNER</div><div class="decision-text">At Yusuf's house. Simple, no extra décor needed. First announcement that they're getting married.</div></div>
+      <div class="decision-item"><div class="decision-topic">ENGAGEMENT — VENUE</div><div class="decision-text">Maryam deciding between: home (open marquee roof + stage) or restaurant hire. Decision pending.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NOTES ==================== -->
+<div class="panel" id="panel-notes">
+  <div class="section-title" style="margin-bottom:6px">📝 Notes & Ideas</div>
+  <p class="section-intro">Your shared scratchpad — supplier contacts, ideas, quotes, random thoughts, things not to forget. Anything goes.</p>
+
+  <textarea id="notes-input" class="editable-field" style="width:100%;min-height:160px" placeholder="Type your note here... e.g. 'Spoke to Chigwell — they confirmed viewing for Saturday 9th June at 10am. Contact: enquiries@thechigwellmarquees.co.uk · 020 8500 8989. Quote was £5k dry hire.'"></textarea>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px">
+    <input type="text" id="notes-tag" placeholder="Tag (e.g. Venue / Catering / Outfits)" style="flex:1;min-width:180px">
+    <button class="btn btn-gold" onclick="addNote()">Save Note</button>
+  </div>
+
+  <div id="notes-list" style="margin-top:24px;display:grid;gap:10px"></div>
+  <div id="notes-empty" style="text-align:center;padding:28px;color:var(--text-dim);font-size:13px;margin-top:16px">No notes yet — add your first above</div>
+</div>
+
+</div><!-- end .content -->
+
+<script>
+// ============================================================
+// DATA STORE — localStorage so edits persist across sessions
+// ============================================================
+const KEY = 'nikkah_planner_v2';
+let state = {
+  tasks: {
+    nikkah: [
+      "Book Nikkah venue",
+      "Confirm Sheikh / Imam date availability",
+      "Book halal caterer",
+      "Book photographer",
+      "Book content creator (informal)",
+      "Book event planner / coordinator",
+      "Maryam's outfit — sorted",
+      "Yusuf's outfit — sorted",
+      "Family clothing — plan coordinated",
+      "Friends' matching outfits — confirm",
+      "Sort rings (buy before Nikkah)",
+      "Mehr — decide amount",
+      "Florist / décor — white & beige",
+      "Welcome banner / signage 'Yusuf & Maryam's Nikkah'",
+      "Plan entrance & exit",
+      "Music / Nasheed — decide",
+      "Guest list — Yusuf's side",
+      "Guest list — Maryam's side",
+      "Send formal invitations",
+      "Seating plan",
+      "Nikkah contract / documentation",
+      "Transport arrangements",
+      "Wedding favours (optional)",
+      "Final venue walkthrough"
+    ].map((t,i) => ({id:i, text:t, done:false})),
+    eng: [
+      "Maryam decides: home marquee or restaurant hire",
+      "Book engagement venue / arrange home setup",
+      "Florist / décor — white & beige",
+      "Welcome banner 'Yusuf & Maryam's Engagement'",
+      "Yusuf's outfit (suit)",
+      "Maryam's outfit (saari — to confirm)",
+      "Book photographer",
+      "Book content creator (informal)",
+      "Finalise guest list",
+      "Send invitations",
+      "Cake / tiramisu — order",
+      "Gifts for Maryam's family — plan",
+      "Caterer / food plan confirmed",
+      "Stage setup (if at home)",
+      "Open marquee roof (if at home)"
+    ].map((t,i) => ({id:i, text:t, done:false})),
+    intro: [
+      "Confirm date with both families",
+      "Finalise guest list (majority of Yusuf's family + some of Maryam's)",
+      "Plan menu / food",
+      "Arrange seating / layout at home",
+      "Send WhatsApp invites",
+      "Plan how the announcement will be made"
+    ].map((t,i) => ({id:i, text:t, done:false}))
+  },
+  guests: [],
+  costs: [],
+  notes: [],
+  decisions: [],
+  customVenues: [],
+  fields: {}
+};
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Merge tasks (keep any user-added ones)
+      if (parsed.tasks) state.tasks = parsed.tasks;
+      if (parsed.guests) state.guests = parsed.guests;
+      if (parsed.costs) state.costs = parsed.costs;
+      if (parsed.notes) state.notes = parsed.notes;
+      if (parsed.decisions) state.decisions = parsed.decisions;
+      if (parsed.customVenues) state.customVenues = parsed.customVenues;
+      if (parsed.fields) state.fields = parsed.fields;
+    }
+  } catch(e) {}
+}
+
+function saveState() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+}
+
+function saveField(key, val) {
+  state.fields[key] = val;
+  saveState();
+}
+
+// Load field values into textareas/inputs
+function restoreFields() {
+  document.querySelectorAll('[oninput]').forEach(el => {
+    const match = el.getAttribute('oninput').match(/saveField\('([^']+)'/);
+    if (match && state.fields[match[1]]) el.value = state.fields[match[1]];
+  });
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function switchTab(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(t => { if(t.textContent.toLowerCase().includes(name) || t.getAttribute('onclick').includes(name)) t.classList.add('active'); });
+  renderAll();
+}
+
+// ============================================================
+// TASKS
+// ============================================================
+function renderTasks(key, containerId, countId, barId) {
+  const tasks = state.tasks[key] || [];
+  const container = document.getElementById(containerId);
+  const done = tasks.filter(t => t.done).length;
+  const pct = tasks.length ? Math.round((done/tasks.length)*100) : 0;
+  if(document.getElementById(countId)) document.getElementById(countId).textContent = done + '/' + tasks.length;
+  if(document.getElementById(barId)) document.getElementById(barId).style.width = pct + '%';
+  if(!container) return;
+  container.innerHTML = tasks.map(t => `
+    <label class="task-item ${t.done ? 'done' : ''}" onclick="toggleTask('${key}',${t.id});return false;">
+      <input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${key}',${t.id})">
+      <span class="task-text">${t.text}</span>
+      <button class="btn btn-danger" style="margin-left:auto;flex-shrink:0" onclick="event.stopPropagation();deleteTask('${key}',${t.id})">✕</button>
+    </label>
+  `).join('');
+}
+
+function toggleTask(key, id) {
+  const t = state.tasks[key].find(t => t.id === id);
+  if(t) { t.done = !t.done; saveState(); renderAll(); }
+}
+
+function deleteTask(key, id) {
+  state.tasks[key] = state.tasks[key].filter(t => t.id !== id);
+  saveState(); renderAll();
+}
+
+function addTask(key) {
+  const input = document.getElementById(key + '-new-task');
+  if(!input || !input.value.trim()) return;
+  const maxId = state.tasks[key].reduce((m,t) => Math.max(m,t.id), 0);
+  state.tasks[key].push({id: maxId+1, text: input.value.trim(), done: false});
+  input.value = '';
+  saveState(); renderAll();
+}
+
+// ============================================================
+// GUESTS
+// ============================================================
+function renderGuests() {
+  const tbody = document.getElementById('guest-tbody');
+  const empty = document.getElementById('guest-empty');
+  const summary = document.getElementById('guest-summary');
+  if(!tbody) return;
+  if(state.guests.length === 0) {
+    tbody.innerHTML = '';
+    if(empty) empty.style.display = 'block';
+    if(summary) summary.textContent = '0 guests added';
+    return;
+  }
+  if(empty) empty.style.display = 'none';
+  if(summary) summary.textContent = state.guests.length + ' guests · ' + state.guests.filter(g=>g.rsvp==='Confirmed ✓').length + ' confirmed';
+  tbody.innerHTML = state.guests.map((g,i) => `
+    <tr>
+      <td style="color:var(--text-dim)">${i+1}</td>
+      <td style="font-weight:400;color:var(--text)">${g.name}</td>
+      <td><span style="font-size:11px;color:var(--text-dim)">${g.side||'—'}</span></td>
+      <td><span style="font-size:11px;color:var(--text-dim)">${g.event||'—'}</span></td>
+      <td>
+        <select onchange="updateGuest(${i},'rsvp',this.value)" style="font-size:11px;background:var(--bg);border:1px solid var(--border);color:${g.rsvp==='Confirmed ✓'?'#6aaa7a':g.rsvp==='Declined ✗'?'#cc6a6a':'var(--text-dim)'}">
+          <option ${!g.rsvp?'selected':''}>Pending</option>
+          <option ${g.rsvp==='Invited'?'selected':''}>Invited</option>
+          <option ${g.rsvp==='Confirmed ✓'?'selected':''}>Confirmed ✓</option>
+          <option ${g.rsvp==='Declined ✗'?'selected':''}>Declined ✗</option>
+        </select>
+      </td>
+      <td><input type="text" value="${g.notes||''}" onchange="updateGuest(${i},'notes',this.value)" style="font-size:12px;background:transparent;border:none;color:var(--text-dim);width:100%;min-width:80px"></td>
+      <td><button class="btn btn-danger" onclick="deleteGuest(${i})">✕</button></td>
+    </tr>
+  `).join('');
+}
+
+function addGuest() {
+  const name = document.getElementById('g-name').value.trim();
+  if(!name) return;
+  state.guests.push({
+    name, side: document.getElementById('g-side').value,
+    event: document.getElementById('g-event').value,
+    rsvp: document.getElementById('g-rsvp').value,
+    notes: document.getElementById('g-notes').value
+  });
+  ['g-name','g-notes'].forEach(id => document.getElementById(id).value = '');
+  ['g-side','g-event','g-rsvp'].forEach(id => document.getElementById(id).selectedIndex = 0);
+  saveState(); renderGuests();
+}
+
+function updateGuest(i, key, val) {
+  state.guests[i][key] = val; saveState();
+}
+
+function deleteGuest(i) {
+  state.guests.splice(i,1); saveState(); renderGuests();
+}
+
+function exportGuests() {
+  const rows = [['Name','Side','Event(s)','RSVP','Notes']];
+  state.guests.forEach(g => rows.push([g.name,g.side,g.event,g.rsvp,g.notes]));
+  const csv = rows.map(r => r.map(c => '"'+(c||'').replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'nikkah-guest-list.csv';
+  a.click();
+}
+
+// ============================================================
+// BUDGET
+// ============================================================
+function renderCosts() {
+  const list = document.getElementById('spend-list');
+  const empty = document.getElementById('spend-empty');
+  const total = state.costs.reduce((s,c) => s + Number(c.amount), 0);
+  if(document.getElementById('total-spent')) document.getElementById('total-spent').textContent = '£' + total.toLocaleString();
+  if(document.getElementById('remaining-budget')) document.getElementById('remaining-budget').textContent = '£' + (10000 - total).toLocaleString();
+  if(!list) return;
+  if(state.costs.length === 0) { if(empty) empty.style.display='block'; list.innerHTML=''; return; }
+  if(empty) empty.style.display='none';
+  list.innerHTML = state.costs.map((c,i) => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:3px">
+      <div>
+        <span style="font-size:13px;color:var(--text-mid)">${c.name}</span>
+        <span style="font-size:11px;color:var(--text-dim);margin-left:10px">${c.event}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:14px;color:var(--gold)">£${Number(c.amount).toLocaleString()}</span>
+        <button class="btn btn-danger" onclick="deleteCost(${i})">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addCost() {
+  const name = document.getElementById('cost-name').value.trim();
+  const amount = document.getElementById('cost-amount').value;
+  if(!name || !amount) return;
+  state.costs.push({name, event: document.getElementById('cost-event').value, amount});
+  document.getElementById('cost-name').value = '';
+  document.getElementById('cost-amount').value = '';
+  saveState(); renderCosts();
+}
+
+function deleteCost(i) { state.costs.splice(i,1); saveState(); renderCosts(); }
+
+// ============================================================
+// NOTES
+// ============================================================
+function renderNotes() {
+  const list = document.getElementById('notes-list');
+  const empty = document.getElementById('notes-empty');
+  if(!list) return;
+  if(state.notes.length === 0) { if(empty) empty.style.display='block'; list.innerHTML=''; return; }
+  if(empty) empty.style.display='none';
+  list.innerHTML = [...state.notes].reverse().map((n,ri) => {
+    const i = state.notes.length - 1 - ri;
+    return `<div class="note-entry">
+      <div class="note-date">${n.date}${n.tag ? ' · <span style="color:var(--gold);font-size:10px;letter-spacing:0.1em">'+n.tag.toUpperCase()+'</span>' : ''}</div>
+      <div class="note-body">${n.text}</div>
+      <button class="btn btn-danger" style="margin-top:8px" onclick="deleteNote(${i})">Delete</button>
+    </div>`;
+  }).join('');
+}
+
+function addNote() {
+  const text = document.getElementById('notes-input').value.trim();
+  if(!text) return;
+  state.notes.push({text, tag: document.getElementById('notes-tag').value.trim(), date: new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})});
+  document.getElementById('notes-input').value = '';
+  document.getElementById('notes-tag').value = '';
+  saveState(); renderNotes();
+}
+
+function deleteNote(i) { state.notes.splice(i,1); saveState(); renderNotes(); }
+
+// ============================================================
+// DECISIONS
+// ============================================================
+function renderDecisions() {
+  const list = document.getElementById('decisions-list');
+  const empty = document.getElementById('decisions-empty');
+  if(!list) return;
+  if(state.decisions.length === 0) { if(empty) empty.style.display='block'; list.innerHTML=''; return; }
+  if(empty) empty.style.display='none';
+  list.innerHTML = [...state.decisions].reverse().map((d,ri) => {
+    const i = state.decisions.length - 1 - ri;
+    return `<div class="decision-item">
+      <div class="decision-topic">${d.topic} <span style="font-size:9px;color:var(--text-dim);margin-left:8px">${d.date}</span></div>
+      <div class="decision-text">${d.text}</div>
+      <button class="btn btn-danger" style="margin-top:8px" onclick="deleteDecision(${i})">Delete</button>
+    </div>`;
+  }).join('');
+}
+
+function addDecision() {
+  const topic = document.getElementById('dec-topic').value.trim();
+  const text = document.getElementById('dec-text').value.trim();
+  if(!topic || !text) return;
+  state.decisions.push({topic, text, date: new Date().toLocaleDateString('en-GB')});
+  document.getElementById('dec-topic').value = '';
+  document.getElementById('dec-text').value = '';
+  saveState(); renderDecisions();
+}
+
+function deleteDecision(i) { state.decisions.splice(i,1); saveState(); renderDecisions(); }
+
+// ============================================================
+// VENUES
+// ============================================================
+function renderCustomVenues() {
+  const container = document.getElementById('custom-venues');
+  if(!container) return;
+  container.innerHTML = state.customVenues.map((v,i) => `
+    <div class="venue-card" style="margin-top:10px">
+      <div class="venue-name">${v.name}</div>
+      <div class="venue-meta">${v.location}</div>
+      <div class="venue-price">${v.price}</div>
+      <button class="btn btn-danger" style="margin-top:10px" onclick="deleteVenue(${i})">Remove</button>
+    </div>
+  `).join('');
+}
+
+function addVenue() {
+  const name = document.getElementById('new-venue-name').value.trim();
+  if(!name) return;
+  state.customVenues.push({name, location: document.getElementById('new-venue-location').value, price: document.getElementById('new-venue-price').value});
+  ['new-venue-name','new-venue-location','new-venue-price'].forEach(id => document.getElementById(id).value='');
+  saveState(); renderCustomVenues();
+}
+
+function deleteVenue(i) { state.customVenues.splice(i,1); saveState(); renderCustomVenues(); }
+
+// ============================================================
+// PROGRESS BAR
+// ============================================================
+function updateProgress() {
+  const allTasks = Object.values(state.tasks).flat();
+  const total = allTasks.length;
+  const done = allTasks.filter(t => t.done).length;
+  const pct = total ? Math.round((done/total)*100) : 0;
+  const fill = document.getElementById('progress-fill');
+  const label = document.getElementById('progress-label');
+  const pctEl = document.getElementById('progress-pct');
+  if(fill) fill.style.width = pct + '%';
+  if(label) label.textContent = done + ' / ' + total + ' tasks';
+  if(pctEl) pctEl.textContent = pct + '% complete';
+
+  // Mini bars on overview
+  ['nikkah','eng','intro'].forEach((key, idx) => {
+    const tasks = state.tasks[key] || [];
+    const d = tasks.filter(t=>t.done).length;
+    const p = tasks.length ? Math.round((d/tasks.length)*100) : 0;
+    const barMap = {nikkah:'bar-nik', eng:'bar-eng', intro:'bar-intro'};
+    const labelMap = {nikkah:'bar-nik-label', eng:'bar-eng-label', intro:'bar-intro-label'};
+    const b = document.getElementById(barMap[key]);
+    const l = document.getElementById(labelMap[key]);
+    if(b) b.style.width = p + '%';
+    if(l) l.textContent = d + '/' + tasks.length + ' tasks done';
+  });
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderTasks('nikkah', 'nikkah-tasks', 'nikkah-task-count', 'nikkah-task-bar');
+  renderTasks('eng', 'eng-tasks', 'eng-task-count', 'eng-task-bar');
+  renderTasks('intro', 'intro-tasks', 'intro-task-count', 'intro-task-bar');
+  renderGuests();
+  renderCosts();
+  renderNotes();
+  renderDecisions();
+  renderCustomVenues();
+  updateProgress();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  loadState();
+  renderAll();
+  restoreFields();
+  // Set initial active tab button
+  document.querySelector('.tab-btn[onclick="switchTab(\'overview\')"]').classList.add('active');
+});
+</script>
+</body>
+</html>
